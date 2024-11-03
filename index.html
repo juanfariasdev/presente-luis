@@ -4,195 +4,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Estoque e Vendas</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Solução de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="font-sans bg-gray-50">
 
     <!-- Header -->
-    <header class="fixed w-full bg-gray-900 bg-opacity-80 backdrop-blur-sm p-4 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">Logo do Software</div>
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <img src="assets/logo.png" alt="Logo" class="h-10 w-auto">
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-8 text-gray-700">
+                <a href="#inicio" class="text-gray-700 hover:text-blue-600">Início</a>
+                <a href="#funcionalidades" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+                <a href="#preco" class="text-gray-700 hover:text-blue-600">Preços</a>
+                <a href="#depoimento" class="text-gray-700 hover:text-blue-600">Depoimentos</a>
+                <a href="#contato" class="text-gray-700 hover:text-blue-600">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="#contato" class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+                Agendar Demonstração
+            </a>
+
             <!-- Mobile Menu Button -->
             <div x-data="{ open: false }" class="md:hidden">
                 <button @click="open = !open" class="focus:outline-none">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                        <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
+                    <i x-show="!open" class='fa-solid fa-bars  text-gray-700 text-xl text-center p-2 rounded'></i>
+                    <i x-show="open"
+                        class='fa-solid fa-bars  text-gray-700 bg-black bg-opacity-[10%] text-xl text-center p-2 rounded'></i>
+
                 </button>
-                <!-- Mobile Menu Dropdown -->
-                <div x-show="open" class="absolute top-12 left-0 w-full bg-gray-800 text-white shadow-lg">
-                    <nav class="flex flex-col space-y-2 p-4">
-                        <a href="#inicio" class="hover:text-gray-400">Início</a>
-                        <a href="#funcionalidades" class="hover:text-gray-400">Funcionalidades</a>
-                        <a href="#precos" class="hover:text-gray-400">Preços</a>
-                        <a href="#depoimentos" class="hover:text-gray-400">Depoimentos</a>
-                        <a href="#contato" class="hover:text-gray-400">Contato</a>
+
+                <!-- Mobile Dropdown Menu -->
+                <div x-show="open" class="absolute top-16 left-0 w-full bg-gray-100 shadow-lg">
+                    <nav class="flex flex-col p-4 space-y-4">
+                        <a href="#inicio" class="text-gray-700 hover:text-blue-600">Início</a>
+                        <a href="#funcionalidades" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+                        <a href="#preco" class="text-gray-700 hover:text-blue-600">Preços</a>
+                        <a href="#depoimento" class="text-gray-700 hover:text-blue-600">Depoimentos</a>
+                        <a href="#contato" class="text-gray-700 hover:text-blue-600">Contato</a>
                     </nav>
                 </div>
             </div>
-            <!-- Desktop Menu -->
-            <nav class="hidden md:flex space-x-6">
-                <a href="#inicio" class="hover:text-gray-400">Início</a>
-                <a href="#funcionalidades" class="hover:text-gray-400">Funcionalidades</a>
-                <a href="#precos" class="hover:text-gray-400">Preços</a>
-                <a href="#depoimentos" class="hover:text-gray-400">Depoimentos</a>
-                <a href="#contato" class="hover:text-gray-400">Contato</a>
-            </nav>
-            <a href="#"
-                class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 transition duration-200 hidden md:block">
-                Agendar uma Demonstração
-            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio"
-        class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-gray-800 to-gray-900 p-4 md:p-8">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Controle Total de Estoque e Vendas, Simples e Eficiente.</h1>
-        <p class="text-lg md:text-xl mb-8">Automatize seu estoque, gerencie vendas em tempo real e imprima etiquetas com
-            facilidade.</p>
-        <a href="#" class="bg-blue-600 text-white py-3 px-6 rounded-full hover:bg-blue-500 transition duration-200">
-            Agendar uma Demonstração
-        </a>
-        <div class="mt-12">
-            <img src="https://via.placeholder.com/800x400" alt="Demonstração do Sistema"
-                class="mx-auto rounded-lg shadow-lg max-w-full">
+    <section id="inicio" class="pt-24 pb-12 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4 flex flex-col justify-between md:flex-row items-center py-24">
+            <div class="md:w-1/2 mb-8 md:mb-0 max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Controle Total de Estoque e Vendas, Simples e Eficiente
+                </h1>
+                <p class="text-xl text-gray-600 mb-8">
+                    Automatize seu estoque, gerencie vendas em tempo real e imprima etiquetas com facilidade.
+                </p>
+                <a href="#contato"
+                    class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg hover:bg-blue-700 transition duration-300">
+                    Agendar uma Demonstração
+                </a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="assets/image.png" alt="Sistema em ação" class="rounded-lg shadow-2xl">
+            </div>
         </div>
     </section>
 
-    <!-- Icon Section -->
-    <section id="funcionalidades" class="p-4 md:p-8 container mx-auto grid gap-8 md:grid-cols-3">
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">📊</div>
-            <h3 class="text-2xl font-bold mb-2">Controle de Estoque Inteligente</h3>
-            <p>Monitore o estoque em tempo real, receba alertas de reposição e evite desperdícios.</p>
-        </div>
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">💸</div>
-            <h3 class="text-2xl font-bold mb-2">Gestão de Vendas Simplificada</h3>
-            <p>Acompanhe suas vendas e obtenha relatórios detalhados para uma gestão eficaz.</p>
-        </div>
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">📋</div>
-            <h3 class="text-2xl font-bold mb-2">Impressão de Etiquetas e Código de Barras</h3>
-            <p>Personalize e imprima etiquetas com código de barras de forma prática e rápida.</p>
-        </div>
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">📏</div>
-            <h3 class="text-2xl font-bold mb-2">Relatórios e Insights</h3>
-            <p>Visualize o desempenho do seu negócio com relatórios completos e insights.</p>
-        </div>
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">💻</div>
-            <h3 class="text-2xl font-bold mb-2">Acesso de Qualquer Dispositivo</h3>
-            <p>Gerencie seu negócio de qualquer lugar e dispositivo.</p>
-        </div>
-        <div
-            class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition duration-200 transform hover:scale-105 text-center">
-            <div class="text-4xl mb-4">🤖</div>
-            <h3 class="text-2xl font-bold mb-2">Integrações com Sistemas</h3>
-            <p>Conecte seu estoque e vendas a outras plataformas para aumentar a eficiência.</p>
+    <!-- Features Section -->
+    <section id="funcionalidades" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Funcionalidades</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Item -->
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="pb-4">
+                        <i class='fa-solid fa-box-open text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Controle Inteligente de Estoque</h3>
+                    <p class="text-gray-600">Monitore o estoque em tempo real, receba alertas de reposição e evite
+                        desperdícios.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+                        <i class='fa-solid fa-chart-line text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Gestão de Vendas Simplificada</h3>
+                    <p class="text-gray-600">Acompanhe suas vendas e obtenha relatórios detalhados para uma gestão
+                        eficaz.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-barcode text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Impressão de Etiquetas</h3>
+                    <p class="text-gray-600">Personalize e imprima etiquetas com código de barras de forma prática e
+                        rápida.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-clipboard-check text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Relatórios e Insights</h3>
+                    <p class="text-gray-600">Visualize o desempenho do seu negócio com relatórios completos e insights.
+                    </p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-laptop text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sistema na núvem</h3>
+                    <p class="text-gray-600">Dados seguros e salvos na núvem.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+                        <i class='fa-solid fa-link text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Integrações</h3>
+                    <p class="text-gray-600">Conecte-se com outras ferramentas essenciais para seu negócio.</p>
+                </div>
+            </div>
         </div>
     </section>
-
     <!-- Funcionalidades Detalhadas -->
     <section class="p-4 md:p-8 container mx-auto space-y-8">
-        <div class="md:flex items-center space-x-8">
+        <div class="flex flex-col md:flex-row items-center gap-8">
             <img src="https://via.placeholder.com/400x300" alt="Controle de Estoque"
                 class="rounded-lg shadow-lg max-w-full">
             <div>
-                <h3 class="text-3xl font-bold mb-2">Controle de Estoque</h3>
+                <h3 class="text-3xl font-bold mt-4 mb-2">Controle de Estoque</h3>
                 <p>Gerencie seu inventário e receba alertas automáticos para evitar rupturas.</p>
             </div>
         </div>
-        <div class="md:flex items-center space-x-8 md:flex-row-reverse">
+        <div class="flex flex-col items-center gap-8 md:flex-row md:flex-row-reverse">
             <img src="https://via.placeholder.com/400x300" alt="Controle de Vendas" class="rounded-lg shadow-lg">
             <div>
-                <h3 class="text-3xl font-bold mb-2">Controle de Vendas</h3>
+                <h3 class="text-3xl font-bold mt-4 mb-2">Controle de Vendas</h3>
                 <p>Veja as vendas em tempo real, obtenha relatórios e analise o desempenho diário.</p>
             </div>
         </div>
     </section>
+    <!-- Pricing Section -->
+    <section od="preco" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Planos e Preços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pricing Plan -->
+                <div class="p-8 rounded-lg bg-white border border-gray-200 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Básico</h3>
+                    <p class="text-4xl font-bold mb-6">R$49/mês</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center justify-center text-gray-700">
+                            <i class="fa-solid fa-check text-green-500 mr-2"></i>
 
-    <!-- Depoimentos -->
-    <section id="depoimentos" class="p-4 md:p-8 bg-gray-800 text-center">
-        <h2 class="text-4xl font-bold mb-8">Depoimentos de Clientes</h2>
-        <blockquote class="italic border-l-4 border-blue-600 pl-4">
-            "Com o [Nome do Sistema], otimizamos o controle de estoque e reduzimos perdas em 35%! - Ana Oliveira,
-            Gerente da [Loja XYZ]"
-        </blockquote>
-        <p class="mt-6">Mais de 500 empresas confiam no nosso sistema para gerenciar seus estoques e vendas. 97% de taxa
-            de satisfação dos clientes.</p>
-    </section>
+                            Controle de Estoque
+                        </li>
+                        <!-- Repeat similar list items for other features -->
+                    </ul>
+                    <a href="#contato" class="bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-700">Começar
+                        Agora</a>
+                </div>
+                <div class="p-8 rounded-lg bg-blue-700 text-center ring-4 ring-blue-500 shadow-lg text-white">
+                    <h3 class="text-2xl font-bold mb-4">Avançado</h3>
+                    <p class="text-4xl font-bold mb-6">R$87/mês</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center justify-center">
+                            <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                            Relatórios Avançados, Impressão de Etiquetas
+                        </li>
+                        <!-- Repeat similar list items for other features -->
+                    </ul>
+                    <a href="#contato" class="bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-500">Começar
+                        Agora</a>
+                </div>
+                <div class="p-8 rounded-lg bg-white border border-gray-200 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Plano Premium</h3>
+                    <p class="text-4xl font-bold mb-6">R$197/mês</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center justify-center text-gray-700">
+                            <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                            Todas as Funcionalidades + Integrações
+                        </li>
+                        <!-- Repeat similar list items for other features -->
+                    </ul>
+                    <a href="#contato" class="bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-700">Começar
+                        Agora</a>
+                </div>
 
-    <!-- Tabela de Preços -->
-    <section id="precos" class="p-4 md:p-8 text-center container mx-auto">
-        <h2 class="text-4xl font-bold mb-8">Plano de Preços</h2>
-        <div class="grid gap-4 md:gap-8 md:grid-cols-3">
-            <div class="bg-gray-800 p-6 rounded-lg">
-                <h3 class="text-2xl font-bold mb-4">Plano Básico</h3>
-                <p>Controle de Estoque e Vendas Básico</p>
-                <p class="text-4xl font-bold mt-4">R$49/mês</p>
-                <a href="#"
-                    class="bg-blue-600 text-white py-2 px-4 mt-4 inline-block rounded hover:bg-blue-500 transition duration-200">Escolher
-                    Plano</a>
-            </div>
-            <div class="bg-blue-700 p-6 rounded-lg shadow-lg ring-4 ring-blue-500">
-                <h3 class="text-2xl font-bold mb-4">Plano Avançado</h3>
-                <p>Relatórios Avançados, Impressão de Etiquetas</p>
-                <p class="text-4xl font-bold mt-4">R$99/mês</p>
-                <a href="#"
-                    class="bg-blue-600 text-white py-2 px-4 mt-4 inline-block rounded hover:bg-blue-500 transition duration-200">Escolher
-                    Plano</a>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg">
-                <h3 class="text-2xl font-bold mb-4">Plano Premium</h3>
-                <p>Todas as Funcionalidades + Integrações</p>
-                <p class="text-4xl font-bold mt-4">R$149/mês</p>
-                <a href="#"
-                    class="bg-blue-600 text-white py-2 px-4 mt-4 inline-block rounded hover:bg-blue-500 transition duration-200">Escolher
-                    Plano</a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="p-8 container mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center">Perguntas Frequentes (FAQ)</h2>
-        <div class="space-y-4">
-            <div class="bg-gray-800 p-4 rounded-lg">
-                <h4 class="font-bold">Posso acessar o sistema de qualquer lugar?</h4>
-                <p>Sim, você pode acessar de qualquer dispositivo conectado à internet.</p>
+    <!-- Testimonials -->
+    <section id="depoimento" class="md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">O que nossos clientes dizem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial Card -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="font-semibold">João Silva</h4>
+                    <p class="text-gray-600">Mercado Central</p>
+                    <p class="text-gray-700 mt-2">"Revolucionou nossa forma de gerenciar estoque. Economia de tempo
+                        incrível!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="font-semibold">João Silva</h4>
+                    <p class="text-gray-600">Mercado Central</p>
+                    <p class="text-gray-700 mt-2">"Revolucionou nossa forma de gerenciar estoque. Economia de tempo
+                        incrível!"</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="font-semibold">João Silva</h4>
+                    <p class="text-gray-600">Mercado Central</p>
+                    <p class="text-gray-700 mt-2">"Revolucionou nossa forma de gerenciar estoque. Economia de tempo
+                        incrível!"</p>
+                </div>
+
             </div>
-            <div class="bg-gray-800 p-4 rounded-lg">
-                <h4 class="font-bold">É possível cancelar o serviço a qualquer momento?</h4>
-                <p>Sim, nosso serviço é totalmente flexível.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Perguntas Frequentes</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div x-data="{ open: false }" class="border rounded-lg bg-white shadow">
+                    <button @click="open = !open"
+                        class="w-full p-4 text-left text-gray-800 flex justify-between items-center">
+                        <span>Como funciona o período de teste grátis?</span>
+                        <span x-show="!open">+</span>
+                        <span x-show="open">-</span>
+                    </button>
+                    <p x-show="open" class="p-4 text-gray-600">Oferecemos 14 dias de teste grátis com todas as
+                        funcionalidades do plano Avançado.</p>
+                </div>
+                <div x-data="{ open: false }" class="border rounded-lg bg-white shadow">
+                    <button @click="open = !open"
+                        class="w-full p-4 text-left text-gray-800 flex justify-between items-center">
+                        <span>É possível cancelar o serviço a qualquer momento?</span>
+                        <span x-show="!open">+</span>
+                        <span x-show="open">-</span>
+                    </button>
+                    <p x-show="open" class="p-4 text-gray-600">Sim, nosso serviço é totalmente flexível.</p>
+                </div>
+                <!-- Repeat similar blocks for other FAQs -->
             </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contato" class="py-16 bg-blue-600 text-white text-center">
+        <h2 class="text-3xl font-bold mb-8">Comece a transformar o controle de estoque e vendas da sua empresa!</h2>
+        <div class="flex justify-center space-x-4">
+            <a href="https://wa.link/htuil4"
+                class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100 flex items-center">
+                <span class="material-icons mr-2">whatsapp</span> <i class="fa-brands fa-whatsapp text-xl"></i>
+
+            </a>
+            <a href="mailto:rikfreire2010@hotmail.com"
+                class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100 flex items-center">
+                <span class="material-icons mr-2">email</span> <i class="fa-regular fa-envelope text-xl"></i>
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 p-4 md:p-8 text-center">
-        <nav class="mb-4">
-            <a href="#inicio" class="hover:text-gray-400 px-2">Início</a>
-            <a href="#funcionalidades" class="hover:text-gray-400 px-2">Funcionalidades</a>
-            <a href="#precos" class="hover:text-gray-400 px-2">Preços</a>
-            <a href="#depoimentos" class="hover:text-gray-400 px-2">Depoimentos</a>
-        </nav>
-        <p>Email: contato@estoquevendas.com | Telefone: (00) 1234-5678</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center">
+                    <img src="assets/logo_black.png" alt="Logo" class="h-16 w-auto mb-4" />
+                    <p class="text-gray-400">Soluções completas para seu negócio</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white">Início</a></li>
+                        <li><a href="#funcionalidades" class="text-gray-400 hover:text-white">Funcionalidades</a></li>
+                        <li><a href="#preco" class="text-gray-400 hover:text-white">Preços</a></li>
+                        <li><a href="#depoimento" class="text-gray-400 hover:text-white">Depoimentos</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <FaPhone class="mr-2" /> +55 19 99698-3542
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <FaEnvelope class="mr-2" /> rikfreire2010@hotmail.com
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Redes Sociais</h4>
+                    <div class="flex space-x-4">
+                        <a href="#contato" class="text-gray-400 hover:text-white">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#contato" class="text-gray-400 hover:text-white">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#contato" class="text-gray-400 hover:text-white">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#contato" class="text-gray-400 hover:text-white">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Estoque do Luiz com S. Todos os direitos reservados.</p>
 
+                <p class="text-white mt-2">Desenvolvido com ❤️ por <a class="text-[#00FF6E]"
+                        href="https://juanpablofarias.com">Juan Pablo
+                        Farias</a>.</p>
+            </div>
+        </div>
     </footer>
 </body>
 
