@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solução de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="font-sans bg-gray-50">
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <img src="images.unsplash.com/photo-1567446537708-ac4aa75c9c28" alt="Logo" class="h-10 w-auto">
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-8 text-gray-700">
+                <a href="#" class="hover:text-blue-600">Início</a>
+                <a href="#" class="hover:text-blue-600">Funcionalidades</a>
+                <a href="#" class="hover:text-blue-600">Preços</a>
+                <a href="#" class="hover:text-blue-600">Depoimentos</a>
+                <a href="#" class="hover:text-blue-600">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="#" class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+                Agendar Demonstração
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <div x-data="{ open: false }" class="md:hidden">
+                <button @click="open = !open" class="focus:outline-none">
+                    <svg x-show="!open" class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg x-show="open" class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Dropdown Menu -->
+                <div x-show="open" class="absolute top-16 left-0 w-full bg-gray-100 shadow-lg">
+                    <nav class="flex flex-col p-4 space-y-4">
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Início</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Funcionalidades</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Preços</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Depoimentos</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Contato</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Controle Total de Estoque e Vendas, Simples e Eficiente
+                </h1>
+                <p class="text-xl text-gray-600 mb-8">
+                    Automatize seu estoque, gerencie vendas em tempo real e imprima etiquetas com facilidade.
+                </p>
+                <a href="#"
+                    class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg hover:bg-blue-700 transition duration-300">
+                    Agendar uma Demonstração
+                </a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Sistema em ação"
+                    class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature Item -->
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="pb-4">
+                        <i class='fa-solid fa-box-open text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Controle Inteligente de Estoque</h3>
+                    <p class="text-gray-600">Gerencie seu inventário em tempo real com alertas automáticos.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+                        <i class='fa-solid fa-chart-line text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Gestão de Vendas Simplificada</h3>
+                    <p class="text-gray-600">Acompanhe vendas e tendências com relatórios detalhados. </p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-barcode text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Impressão de Etiquetas</h3>
+                    <p class="text-gray-600">Crie e imprima etiquetas com códigos de barras facilmente.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-clipboard-check text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Relatórios e Insights</h3>
+                    <p class="text-gray-600">Tome decisões baseadas em dados precisos e atualizados.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+
+                        <i class='fa-solid fa-laptop text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Acesso Multiplataforma</h3>
+                    <p class="text-gray-600">Acesse seu sistema de qualquer dispositivo, em qualquer lugar.</p>
+                </div>
+                <div class="px-6 py-8 border rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-4">
+                        <i class='fa-solid fa-link text-4xl text-blue-600'></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Integrações</h3>
+                    <p class="text-gray-600">Conecte-se com outras ferramentas essenciais para seu negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">O que nossos clientes dizem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial Card -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="images.unsplash.com/photo-1472099645785-5658abf4ff4e" alt="Cliente"
+                        class="w-12 h-12 rounded-full mb-4 mx-auto">
+                    <h4 class="font-semibold">João Silva</h4>
+                    <p class="text-gray-600">Mercado Central</p>
+                    <p class="text-gray-700 mt-2">"Revolucionou nossa forma de gerenciar estoque. Economia de tempo
+                        incrível!"</p>
+                </div>
+                <!-- Repeat similar blocks for other testimonials -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Planos e Preços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pricing Plan -->
+                <div class="p-8 rounded-lg bg-white border border-gray-200 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Básico</h3>
+                    <p class="text-4xl font-bold mb-6">R$197/mês</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center justify-center text-gray-700">
+                            <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M8 12.94l-3.5-3.47-1.44 1.43 4.94 4.94L16.97 7.46l-1.42-1.44L8 12.94z"></path>
+                            </svg>
+                            Controle de Estoque
+                        </li>
+                        <!-- Repeat similar list items for other features -->
+                    </ul>
+                    <a href="#" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">Começar Agora</a>
+                </div>
+                <!-- Repeat similar blocks for other plans -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Perguntas Frequentes</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div x-data="{ open: false }" class="border rounded-lg bg-white shadow">
+                    <button @click="open = !open"
+                        class="w-full p-4 text-left text-gray-800 flex justify-between items-center">
+                        <span>Como funciona o período de teste grátis?</span>
+                        <span x-show="!open">+</span>
+                        <span x-show="open">-</span>
+                    </button>
+                    <p x-show="open" class="p-4 text-gray-600">Oferecemos 14 dias de teste grátis com todas as
+                        funcionalidades do plano Avançado.</p>
+                </div>
+                <!-- Repeat similar blocks for other FAQs -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-16 bg-blue-600 text-white text-center">
+        <h2 class="text-3xl font-bold mb-8">Comece a transformar o controle de estoque e vendas da sua empresa!</h2>
+        <div class="flex justify-center space-x-4">
+            <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100 flex items-center">
+                <span class="material-icons mr-2">whatsapp</span> WhatsApp
+            </a>
+            <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100 flex items-center">
+                <span class="material-icons mr-2">email</span> Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="images.unsplash.com/photo-1567446537708-ac4aa75c9c28" alt="Logo" class="h-10 w-auto mb-4">
+                    <p class="text-gray-400">Soluções completas para seu negócio</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Início</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Funcionalidades</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
